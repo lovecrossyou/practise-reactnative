@@ -12,6 +12,6 @@ import {
   View
 } from 'react-native';
 
-import GuideView from './views/GuideView'
+import GuideView from './guidComponent/GuideView'
 
 AppRegistry.registerComponent('LaunchProject', () => GuideView);
