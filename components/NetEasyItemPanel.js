@@ -10,7 +10,7 @@ import {
     View,
     PixelRatio,
     Dimensions,
-    TouchableHighlight
+    TouchableOpacity
 } from 'react-native';
 
 
@@ -27,10 +27,10 @@ class NetEasyHeader extends Component {
 
 class NetEasyItem extends Component {
     render(){
-        return (<View style={styles.itemStyle}>
-            <TouchableHighlight style={{alignSelf:'center'}}>
-                萝卜白菜
-            </TouchableHighlight>
+        return (<View>
+            <TouchableOpacity style={styles.button}>
+                <Text>萝卜白菜</Text>
+            </TouchableOpacity>
         </View>)
     }
 }
@@ -87,21 +87,20 @@ export default class NetEasyItemPanel extends Component {
     }
 
     render() {
+        const { counter, selectList,likedList } = this.props;
         return (<View style={styles.container}>
             <NetEasyHeader/>
             <SelectedBlock
-                likedList={this.props.likedList}
+                likedList={selectList}
                 onDeleteLikeItem={(item) => {
-                    dispatch(action.deleteLikeItem(item))
                 }}>
                 >
             </SelectedBlock>
 
             <SelectListBlock
-                selectList={this.props.selectList}
-                likedList={this.props.likedList}
+                selectList={selectList}
+                likedList={likedList}
                 onAddLikeItem={(index, item) => {
-                    dispatch(action.addLikeItem(index, item))
                 }}>
                 >
             </SelectListBlock>
@@ -139,5 +138,14 @@ const styles = StyleSheet.create({
         borderColor:'#FFF8DC',
         justifyContent:'center',
         alignItems:'center'
+    },
+    button: {
+        width: 100,
+        height: 30,
+        padding: 10,
+        backgroundColor: 'lightgray',
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: 3
     }
 })
