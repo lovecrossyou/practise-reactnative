@@ -12,6 +12,17 @@ import {
   View
 } from 'react-native';
 
+import codePush from "react-native-code-push";
 import GuideView from './guidComponent/GuideView'
 
-AppRegistry.registerComponent('LaunchProject', () => GuideView);
+
+export default class RootView extends Component{
+  componentDidMount(){
+        codePush.sync();
+    }
+  render(){
+    return (<GuideView />);
+  }
+}
+
+AppRegistry.registerComponent('LaunchProject', () => RootView);
