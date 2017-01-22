@@ -20,7 +20,7 @@ var {height, width} = Dimensions.get('window');
 class NetEasyHeader extends Component {
     render() {
         return <View style={styles.header}>
-            <Text style={{fontSize: 18}}>频道管理</Text>
+            <Text style={{fontSize: 18,paddingTop:20}}>频道管理</Text>
         </View>
     }
 }
@@ -121,8 +121,7 @@ const styles = StyleSheet.create({
         height: (height - 20 - 44) / 2,
     },
     header: {
-        marginTop: 20,
-        height: 44,
+        height: 64,
         backgroundColor: '#FFEBCD',
         justifyContent: 'center',
         alignItems: 'center'
