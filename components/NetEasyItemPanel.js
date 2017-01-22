@@ -8,5 +8,136 @@ import {
     Text,
     TextInput,
     View,
-    PixelRatio
+    PixelRatio,
+    Dimensions,
+    TouchableHighlight
 } from 'react-native';
+
+
+var {height, width} = Dimensions.get('window');
+
+
+class NetEasyHeader extends Component {
+    render() {
+        return <View style={styles.header}>
+            <Text style={{fontSize: 18}}>频道管理</Text>
+        </View>
+    }
+}
+
+class NetEasyItem extends Component {
+    render(){
+        return (<View style={styles.itemStyle}>
+            <TouchableHighlight style={{alignSelf:'center'}}>
+                萝卜白菜
+            </TouchableHighlight>
+        </View>)
+    }
+}
+
+class SelectedBlock extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    deleteItem(event, index) {
+        this.props.onDeleteLikeItem(index);
+    }
+
+    render() {
+        let likedList = this.props.likedList;
+        let likedListArray = [];
+        let likedListKey = Object.keys(likedList);
+        likedListKey.forEach(function (index) {
+            likedListArray.push(likedList[index]);
+        })
+        return (<View
+            style={styles.selectStyle}>
+            <View style={{height: 24, backgroundColor: '#ffffff'}}>
+                <Text style={{lineHeight:24,paddingLeft:4}}>已选分类</Text>
+            </View>
+            <View style={{flexDirection:'row'}}>
+                <NetEasyItem />
+                <NetEasyItem />
+                <NetEasyItem />
+            </View>
+        </View>)
+    }
+}
+
+class SelectListBlock extends Component {
+    render() {
+        return (<View
+            style={styles.linkStyle}>
+            <View style={{height: 24, backgroundColor: '#ffffff'}}>
+                <Text style={{lineHeight:24,paddingLeft:4}}>选择分类</Text>
+            </View>
+            <View style={{flexDirection:'row'}}>
+                <NetEasyItem />
+                <NetEasyItem />
+                <NetEasyItem />
+            </View>
+        </View>)
+    }
+}
+
+export default class NetEasyItemPanel extends Component {
+    constructor(props) {
+        super(props)
+    }
+
+    render() {
+        return (<View style={styles.container}>
+            <NetEasyHeader/>
+            <SelectedBlock
+                likedList={this.props.likedList}
+                onDeleteLikeItem={(item) => {
+                    dispatch(action.deleteLikeItem(item))
+                }}>
+                >
+            </SelectedBlock>
+
+            <SelectListBlock
+                selectList={this.props.selectList}
+                likedList={this.props.likedList}
+                onAddLikeItem={(index, item) => {
+                    dispatch(action.addLikeItem(index, item))
+                }}>
+                >
+            </SelectListBlock>
+        </View>)
+    }
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    },
+    selectStyle: {
+        backgroundColor: 'gray',
+        height: (height - 20 - 44) / 2,
+    },
+    linkStyle: {
+        backgroundColor: 'red',
+        height: (height - 20 - 44) / 2,
+    },
+    header: {
+        marginTop: 20,
+        height: 44,
+        backgroundColor: '#FFEBCD',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    itemStyle:{
+        marginTop:4,
+        marginLeft:2,
+        marginRight:2,
+        width:70,
+        height:30,
+        backgroundColor:'#FFFAF0',
+        borderBottomWidth:1,
+        borderColor:'#FFF8DC',
+        justifyContent:'center',
+        alignItems:'center'
+    }
+})

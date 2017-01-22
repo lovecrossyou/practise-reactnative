@@ -6,7 +6,8 @@ import {
     AppRegistry,
     StyleSheet,
     Text,
-    TextInput
+    TextInput,
+    Demitions
 } from 'react-native';
 
 export default class AutoExpandingTextInput extends  Component{
