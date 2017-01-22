@@ -15,8 +15,8 @@ class NetEasyApp extends Component {
     const { state, actions } = this.props;
     return (
       <NetEasyItemPanel
-          likedList={[]}
-          selectList={[]}
+          likedList={['1','2']}
+          selectList={['3','4']}
         {...actions} />
     );
   }

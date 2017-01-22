@@ -29,7 +29,7 @@ class NetEasyItem extends Component {
     render(){
         return (<View>
             <TouchableOpacity style={styles.button}>
-                <Text>萝卜白菜</Text>
+                <Text>{this.props.text}</Text>
             </TouchableOpacity>
         </View>)
     }
@@ -57,9 +57,9 @@ class SelectedBlock extends Component {
                 <Text style={{lineHeight:24,paddingLeft:4}}>已选分类</Text>
             </View>
             <View style={{flexDirection:'row'}}>
-                <NetEasyItem />
-                <NetEasyItem />
-                <NetEasyItem />
+                <NetEasyItem text="萝卜白菜"/>
+                <NetEasyItem text="萝卜白菜001"/>
+                <NetEasyItem text="萝卜白菜002"/>
             </View>
         </View>)
     }
