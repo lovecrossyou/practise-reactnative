@@ -113,11 +113,11 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     selectStyle: {
-        backgroundColor: 'gray',
+        // backgroundColor: 'gray',
         height: (height - 20 - 44) / 2,
     },
     linkStyle: {
-        backgroundColor: 'red',
+        // backgroundColor: 'red',
         height: (height - 20 - 44) / 2,
     },
     header: {
